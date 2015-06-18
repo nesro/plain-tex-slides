@@ -20,4 +20,4 @@ I wanted to look just a little tiny bit under the hood of the almighty {La,Xe,Lu
 
 # BI-TEX semestral project
 
-This is a semestral project for the [BI-TEX](http://petr.olsak.net/typotex.html "BI-TEX") course on [FIT CTU](http://fit.cvut.cz/ "Czech Technical University in Prague - Faculty of Information Technology") held by the wizard of TeX: [RNDr. Petr Olšák](http://petr.olsak.net/ "Petr Olšák"), the creator of the great [OPMax plainTeX macros](http://petr.olsak.net/opmac-e.html "OPmac") plainTeX macros.
+This is a semestral project for the [BI-TeX](http://petr.olsak.net/typotex.html "BI-TeX") course on [FIT CTU](http://fit.cvut.cz/ "Czech Technical University in Prague - Faculty of Information Technology") held by the wizard of TeX: [RNDr. Petr Olšák](http://petr.olsak.net/ "RNDr.  Petr Olšák"), the creator of the great [OPMac plainTeX macros](http://petr.olsak.net/opmac-e.html "OPmac").
