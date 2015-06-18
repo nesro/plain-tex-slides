@@ -1,0 +1,158 @@
+% plain-tex-slides.tex
+% Plain TeX slides
+% author: Tomas Nesrovnal nesro@nesro.cz
+% https://github.com/nesro/plain-tex-slides
+% version: 6
+
+%-------------------------------------------------------------------------------
+% Plain TeX slides  ------------------------------------------------------------
+% If you don't want to change HOW the slides will look like, feel free to scroll
+% down and edit this file after a similar comment to this.
+%-------------------------------------------------------------------------------
+
+% page size and margins --------------------------------------------------------
+
+\vsize=210mm
+\hsize=297mm
+\special{papersize=\the\hsize,\the\vsize}
+\hoffset=-1in
+\voffset=-1in
+\advance\vsize by -25mm
+\advance\hsize by -25mm
+\advance\hoffset by 10mm
+\advance\voffset by 10mm
+
+% images -----------------------------------------------------------------------
+% I give up. Including images with just plain TeX is hard. I'll use epsf
+
+\input epsf
+
+% colors -----------------------------------------------------------------------
+
+\global\def\textcolor{Black}
+\special{color \textcolor}
+\special{background White}
+\def\colortext[#1]#2{\special{color #1}#2\special{color \textcolor}}
+
+% font -------------------------------------------------------------------------
+
+\font\fh=ecsx3583 % font header
+\font\fn=ecss2986 % font normal
+\font\fs=ecss1728 % font small
+\font\ff=ecss1440 % font footline
+\fn
+\baselineskip=1.5em
+
+% slide elements ---------------------------------------------------------------
+
+\def\header#1{\centerline{\fh#1\fn}\vskip 1em }
+
+\def\beglist{\par\begingroup\def\-{\par -}\leftskip=1em}
+\def\endlist{\par\endgroup}
+
+\def\centerbox#1{
+	\vskip 1em
+	\centerline{
+		\vbox{
+			\hrule
+			\hbox{%
+				\vrule
+				\hskip 0.5em
+				\vbox{
+					\vskip 0.5em
+					\hbox{ #1 }
+					\vskip 0.5em
+				}
+				\hskip 0.5em
+				\vrule
+			}
+			\hrule
+		}
+	}
+}
+
+% last slide number ------------------------------------------------------------
+
+\newread\myread
+\immediate\openin\myread=plain-tex-slides-aux.tex
+\ifeof\myread 
+	\let\finalSlide 666
+\else
+	\immediate\read\myread to \finalSlide
+\fi
+\immediate\closein\myread
+
+\def\firstSlide {
+}
+
+\newcount\cntSlide
+\def\nextSlide {
+	\vfil
+	\break
+	\advance\cntSlide by1
+}
+
+\newwrite\mywrite
+\def\lastSlide{
+	\advance\cntSlide by1
+	\immediate\openout\mywrite=plain-tex-slides-aux.tex
+	\immediate\write\mywrite{\the\cntSlide}
+	\immediate\closeout\mywrite
+}
+
+%-------------------------------------------------------------------------------
+% Plain TeX slides  ------------------------------------------------------------
+% Edit the lines below  :) -----------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\footline{ \ff github.com/nesro/plain-\TeX-slides \hfil \folio/\finalSlide \fn }
+
+\firstSlide %-------------------------------------------------------------------
+
+\header{Plain \TeX{} slides example}
+
+This is a line of text with a \colortext[Red]{red} word.
+
+Check out this list:
+\beglist
+\- This is an example of a list.
+\- Another item of the list.
+\endlist
+
+CTU logo in a box:
+\centerbox{\epsfbox{cl.eps}}
+
+\nextSlide %--------------------------------------------------------------------
+
+\header{The second slide}
+
+\beglist
+\- Paragraphs aren't any special. I'm fine with that.
+\- See the funny text below.
+\endlist
+
+\fs
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at tellus auctor, hendrerit eros sed, elementum odio. In gravida mi eget nisi condimentum, id consectetur purus efficitur. Ut accumsan velit sit amet sem accumsan vulputate. Nullam pulvinar mollis augue, ac tincidunt nulla. Praesent sed eros id turpis tincidunt consectetur. Nam pulvinar dictum est. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Ut et eros ut arcu vulputate finibus sed non mauris. Pellentesque a gravida mi, non varius lectus. Aliquam tincidunt ac lectus et auctor. Mauris eget dignissim ligula.
+\fn
+
+\nextSlide %--------------------------------------------------------------------
+
+This page is without header.
+
+This slides has been created by: Plain \TeX{} slides
+
+\colortext[Blue]{https://github.com/nesro/plain-tex-slides}
+
+\centerbox{Thanks for reading this awesome slides}
+
+\lastSlide
+
+\bye %--------------------------------------------------------------------------
+
+% Some useful links:
+% https://en.wikibooks.org/wiki/LaTeX/Plain_TeX
+% https://en.wikibooks.org/wiki/TeX
+% http://tex.stackexchange.com/questions/217936/input-output-primitives-of-tex
+% http://www.math.brown.edu/~jhs/ReferenceCards/TeXRefCard.v1.5.pdf
+% fonts to use: http://bay.uchicago.edu/tex-archive/fonts/ec/ready-mf/
+% ftp://ftp.yzu.edu.tw/CTAN/systems/knuth/local/lib/
